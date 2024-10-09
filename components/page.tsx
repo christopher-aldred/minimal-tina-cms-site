@@ -1,8 +1,23 @@
 "use client";
 
+import Link from "next/link";
 import { PageQuery } from "../tina/__generated__/types";
-import Image from "next/image";
 import { tinaField, useTina } from "tinacms/dist/react";
+import { useEffect } from "react";
+import { TransitionChild } from "@headlessui/react";
+
+export const FadeAndSlide = ({ delay, children }) => (
+  <TransitionChild
+    enter={`transition-all ease-in-out duration-700 ${delay}`}
+    enterFrom="opacity-0 translate-y-12"
+    enterTo="opacity-100 translate-y-0"
+    leave="transition-all ease-in-out duration-300"
+    leaveFrom="opacity-100"
+    leaveTo="opacity-0"
+  >
+    {children}
+  </TransitionChild>
+);
 
 export function Page(props: {
   data: PageQuery;
@@ -11,81 +26,84 @@ export function Page(props: {
 }) {
   const { data } = useTina(props);
 
+  const randomiseLinkColours = () => {
+    let colourArray = [
+      "decoration-yellow-400",
+      "decoration-red-500",
+      "decoration-green-500",
+      "decoration-blue-500",
+    ];
+    let items = document.getElementsByTagName("u");
+    for (var i = 0; i < items.length; i++) {
+      items[i]!.className = ` ${
+        colourArray[Math.floor(Math.random() * colourArray.length)]
+      }`;
+    }
+  };
+
+  useEffect(() => {
+    randomiseLinkColours();
+    let items = document.getElementsByTagName("u");
+    let triggered = false;
+    for (var i = 0; i < items.length; i++) {
+      items[i].addEventListener("mouseenter", () => {
+        if (!triggered) {
+          randomiseLinkColours();
+          triggered = true;
+        }
+      });
+      items[i].addEventListener("mouseleave", () => {
+        triggered = false;
+      });
+    }
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p
-          data-tina-field={tinaField(data.page, "header")}
-          className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30"
-        >
-          {data.page.header}
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <FadeAndSlide delay="delay-100">
+      <div>
+        <nav className="flex space-x-6 justify-center mb-10">
+          <b>
+            <u>
+              <Link href="#">home</Link>
+            </u>
+          </b>
+          <Link href="#">posts</Link>
+          <Link href="#">etc</Link>
+        </nav>
+        <main id="page" className="max-w-[600px] text-left px-4">
+          <p>
+            Welcome to this blog template by me{" "}
+            <u>
+              <Link href="#">chris</Link>
+            </u>
+            !
+            <br />
+            (based on{" "}
+            <Link href="#">
+              <u id="test">this</u>
+            </Link>{" "}
+            astro project by @cassidoo)
+            <br />
+            <br />
+            It’s using Next.js, tailwind and TinaCMS. You can clone it on GitHub
+            to use it for yourself, and see how it works! I would love if you
+            told me when you do use it, I love seeing variations on it!
+            <br />
+            <br />
+            The tags at the bottom of the page are dynamically generated. The
+            more tags you use, the more tags are added to the list! Posts are
+            simple markdown files.
+            <br />
+            <br />
+            You should also check out my newsletter, or my word game Jumblie, or
+            my{" "}
+            <u>
+              <Link href="#">GitHub profile</Link>
+            </u>
+            . Or don’t. Follow your dreams. Enjoy!
+          </p>
+        </main>
       </div>
-
-      <div
-        // @ts-ignore
-        data-tina-field={tinaField(data.page.logo, "url")}
-        className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]"
-      >
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src={data.page.logo?.url || "/next.svg"}
-          alt={data.page.logo?.alt || ""}
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        {data.page.links?.map((link) => {
-          return (
-            <a
-              key={link?.url}
-              href={link?.url || ""}
-              className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2
-                // @ts-ignore
-                data-tina-field={tinaField(link, "header")}
-                className={`mb-3 text-2xl font-semibold`}
-              >
-                {link?.header}{" "}
-                <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                  -&gt;
-                </span>
-              </h2>
-              <p
-                // @ts-ignore
-                data-tina-field={tinaField(link, "description")}
-                className={`m-0 max-w-[30ch] text-sm opacity-50`}
-              >
-                {link?.description}
-              </p>
-            </a>
-          );
-        })}
-      </div>
-    </main>
+    </FadeAndSlide>
   );
 }

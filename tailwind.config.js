@@ -12,6 +12,13 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        iaWriterMono: ["iA Writer Mono"],
+        iaWriterMonoBold: ["iA Writer Mono Bold"],
+      },
+    },
+    textDecorationThickness: {
+      DEFAULT: "3px",
     },
   },
   plugins: [],
