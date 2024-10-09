@@ -9,8 +9,11 @@
 }
 
 @layer base {
+  a {
+    @apply hover:font-iaWriterMonoBold hover:underline decoration-[3px];
+  }
   u {
-    @apply decoration-[3px] decoration-white/0 hover:font-iaWriterMonoBold;
+    @apply decoration-[3px] decoration-white/0;
   }
   b {
     @apply font-iaWriterMonoBold;

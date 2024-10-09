@@ -4,20 +4,7 @@ import Link from "next/link";
 import { PageQuery } from "../tina/__generated__/types";
 import { tinaField, useTina } from "tinacms/dist/react";
 import { useEffect } from "react";
-import { TransitionChild } from "@headlessui/react";
-
-export const FadeAndSlide = ({ delay, children }) => (
-  <TransitionChild
-    enter={`transition-all ease-in-out duration-700 ${delay}`}
-    enterFrom="opacity-0 translate-y-12"
-    enterTo="opacity-100 translate-y-0"
-    leave="transition-all ease-in-out duration-300"
-    leaveFrom="opacity-100"
-    leaveTo="opacity-0"
-  >
-    {children}
-  </TransitionChild>
-);
+import { FadeAndSlide } from "../app/animations";
 
 export function Page(props: {
   data: PageQuery;
@@ -26,6 +13,7 @@ export function Page(props: {
 }) {
   const { data } = useTina(props);
 
+  // Assigns every underlined word one of four decoration colours randomly
   const randomiseLinkColours = () => {
     let colourArray = [
       "decoration-yellow-400",
@@ -33,7 +21,7 @@ export function Page(props: {
       "decoration-green-500",
       "decoration-blue-500",
     ];
-    let items = document.getElementsByTagName("u");
+    let items = document.getElementsByTagName("a");
     for (var i = 0; i < items.length; i++) {
       items[i]!.className = ` ${
         colourArray[Math.floor(Math.random() * colourArray.length)]
@@ -41,9 +29,10 @@ export function Page(props: {
     }
   };
 
+  // On first load, randomise the link colours and attach event listeners
   useEffect(() => {
     randomiseLinkColours();
-    let items = document.getElementsByTagName("u");
+    let items = document.getElementsByTagName("a");
     let triggered = false;
     for (var i = 0; i < items.length; i++) {
       items[i].addEventListener("mouseenter", () => {
@@ -68,6 +57,9 @@ export function Page(props: {
             </u>
           </b>
           <Link href="#">posts</Link>
+          <Link href="#">portfolio</Link>
+          <Link href="#">github</Link>
+          <Link href="#">linkedin</Link>
           <Link href="#">etc</Link>
         </nav>
         <main id="page" className="max-w-[600px] text-left px-4">
