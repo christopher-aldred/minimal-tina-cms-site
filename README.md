@@ -2,10 +2,6 @@
 
 This is a A Next.js + TinaCMS starter site designed to be hosted on entirely on Vercel (with Markdown in GitHub). Please check out [the docs](https://tina.io/docs/self-hosted/overview/) for more information on self-hosting TinaCMS.
 
-Watch a 1-min demo [https://www.youtube.com/watch?v=h6LoJS3FFOA](https://www.youtube.com/watch?v=h6LoJS3FFOA)
-
-[![Youtube video](https://github.com/tinacms/tina-self-hosted-demo/assets/776019/de4eac8f-b5da-4e6f-bc96-bbeaee7492e5)](https://www.youtube.com/watch?v=h6LoJS3FFOA)
-
 # Vercel Quick Start
 
 Use the following link to directly deploy this demo to Vercel. You will need a Vercel account and a GitHub personal access token (PAT) with access to the repository (once it has been created).
