@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "name": "Tina User",
-      "email": "user@tina.io",
-      "username": "tinauser",
+      "name": "Chris",
+      "email": "chris@aldred.dev",
+      "username": "admin",
       "password": {
         "value": "tinarocks",
         "passwordChangeRequired": true

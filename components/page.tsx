@@ -5,6 +5,7 @@ import { PageQuery } from "../tina/__generated__/types";
 import { tinaField, useTina } from "tinacms/dist/react";
 import { useEffect } from "react";
 import { FadeAndSlide } from "../app/animations";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 export function Page(props: {
   data: PageQuery;
@@ -56,44 +57,16 @@ export function Page(props: {
               <Link href="#">home</Link>
             </u>
           </b>
-          <Link href="#">posts</Link>
+          <Link href="#">contact</Link>
           <Link href="#">portfolio</Link>
           <Link href="#">github</Link>
           <Link href="#">linkedin</Link>
           <Link href="#">etc</Link>
         </nav>
-        <main id="page" className="max-w-[600px] text-left px-4">
-          <p>
-            Welcome to this blog template by me{" "}
-            <u>
-              <Link href="#">chris</Link>
-            </u>
-            !
-            <br />
-            (based on{" "}
-            <Link href="#">
-              <u id="test">this</u>
-            </Link>{" "}
-            astro project by @cassidoo)
-            <br />
-            <br />
-            It’s using Next.js, tailwind and TinaCMS. You can clone it on GitHub
-            to use it for yourself, and see how it works! I would love if you
-            told me when you do use it, I love seeing variations on it!
-            <br />
-            <br />
-            The tags at the bottom of the page are dynamically generated. The
-            more tags you use, the more tags are added to the list! Posts are
-            simple markdown files.
-            <br />
-            <br />
-            You should also check out my newsletter, or my word game Jumblie, or
-            my{" "}
-            <u>
-              <Link href="#">GitHub profile</Link>
-            </u>
-            . Or don’t. Follow your dreams. Enjoy!
-          </p>
+        <main id="page" className="max-w-[650px] text-left px-4">
+          <div data-tina-field={tinaField(data.page, "body")}>
+            <TinaMarkdown content={data.page.body} />
+          </div>
         </main>
       </div>
     </FadeAndSlide>

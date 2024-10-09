@@ -9,8 +9,32 @@
 }
 
 @layer base {
+  ul {
+    @apply list-disc list-item ml-5;
+  }
+  ol {
+    @apply ml-[35px] list-decimal;
+  }
+  code {
+    @apply bg-neutral-500/50 p-2 rounded-lg;
+  }
+  h1 {
+    @apply text-3xl break-normal mt-4;
+  }
+  h2 {
+    @apply text-2xl text-neutral-500 dark:text-neutral-400 mt-4;
+  }
+  h3 {
+    @apply text-xl text-neutral-500 dark:text-neutral-400 mt-4;
+  }
+  p {
+    @apply mb-4;
+  }
   a {
     @apply hover:font-iaWriterMonoBold hover:underline decoration-[3px];
+  }
+  main a {
+    @apply underline;
   }
   u {
     @apply decoration-[3px] decoration-white/0;
