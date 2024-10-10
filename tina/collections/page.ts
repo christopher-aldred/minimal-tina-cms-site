@@ -6,7 +6,15 @@ export const PageCollection: Collection = {
   path: "content/pages",
   format: "mdx",
   ui: {
-    router: () => "/",
+    filename: {
+      slugify: (values) => {
+        return `${values?.title?.toLowerCase().replace(/ /g, "-")}`;
+      },
+    },
+    router: (value) => {
+      if (value.document._sys.title === "home") return "/";
+      return `/page/${value.document._sys.filename}`;
+    },
   },
   fields: [
     {

@@ -49,26 +49,8 @@ export function Page(props: {
   }, []);
 
   return (
-    <FadeAndSlide delay="delay-100">
-      <div>
-        <nav className="flex space-x-6 justify-center mb-10">
-          <b>
-            <u>
-              <Link href="#">home</Link>
-            </u>
-          </b>
-          <Link href="#">contact</Link>
-          <Link href="#">portfolio</Link>
-          <Link href="#">github</Link>
-          <Link href="#">linkedin</Link>
-          <Link href="#">etc</Link>
-        </nav>
-        <main id="page" className="max-w-[650px] text-left px-4">
-          <div data-tina-field={tinaField(data.page, "body")}>
-            <TinaMarkdown content={data.page.body} />
-          </div>
-        </main>
-      </div>
-    </FadeAndSlide>
+    <div data-tina-field={tinaField(data.page, "body")}>
+      <TinaMarkdown content={data.page.body} />
+    </div>
   );
 }
