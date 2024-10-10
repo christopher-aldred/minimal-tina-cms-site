@@ -18,6 +18,7 @@ const randomiseLinkColours = () => {
   });
 };
 
+// Highlights the current page link in the nav bar
 const highlightCurrentPageLink = () => {
   var pageLinks = document.querySelectorAll(
     `a[href='${window.location.pathname}']`
@@ -29,9 +30,23 @@ const highlightCurrentPageLink = () => {
   });
 };
 
+//Conditionaly highlight posts link if in a post
+const conditionallyHighlightPostsLink = () => {
+  if (window.location.pathname.includes("/posts")) {
+    var pageLinks = document.querySelectorAll(`a[href='/posts']`);
+    pageLinks.forEach((pageLink) => {
+      pageLink.className =
+        "font-iaWriterMonoBold underline decoration-[3px] " +
+        colourArray[Math.floor(Math.random() * colourArray.length)];
+    });
+  }
+};
+
+// Runs JS styling on page load and attaches event listeners to re-highlight links on hover
 const initLinkStyling = () => {
   randomiseLinkColours();
   highlightCurrentPageLink();
+  conditionallyHighlightPostsLink();
   let items = document.getElementsByTagName("a");
   let triggered = false;
   for (var i = 0; i < items.length; i++) {
@@ -39,6 +54,7 @@ const initLinkStyling = () => {
       if (!triggered) {
         randomiseLinkColours();
         highlightCurrentPageLink();
+        conditionallyHighlightPostsLink();
         triggered = true;
       }
     });
@@ -48,9 +64,10 @@ const initLinkStyling = () => {
   }
 };
 
+// Client side component that can be added into any page
 export default function LinkColourer() {
   useEffect(() => {
     initLinkStyling();
-  }, [window.location.href]);
+  }, []);
   return <div></div>;
 }
