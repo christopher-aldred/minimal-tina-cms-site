@@ -24,7 +24,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="min-w-screen font-iaWriterMono bg-[#fff6f6] text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 overflow-hidden mb-1">
+        <div className="min-w-screen font-iaWriterMono bg-[#fff6f6] text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 mb-1">
           <center>
             <Transition
               className="min-h-screen flex flex-col"
@@ -32,18 +32,21 @@ export default async function RootLayout({
               show={true}
               appear={true}
             >
-              <FadeAndSlide delay="delay-0">
-                <header>
-                  <div className="max-w-96 pt-10 text-left px-4">
+              <header>
+                <div className="max-w-96 pt-10 text-left px-4">
+                  <FadeAndSlide delay="delay-0">
                     <h1 className="text-3xl my-4">Chris's blog template</h1>
+                  </FadeAndSlide>
+                  <FadeAndSlide delay="delay-100">
                     <h2 className="text-2xl text-neutral-500 dark:text-neutral-400">
                       A blog template for you!
                     </h2>
-                  </div>
-                </header>
-              </FadeAndSlide>
-              <FadeAndSlide delay="delay-100">
-                <div className="flex-1">
+                  </FadeAndSlide>
+                </div>
+              </header>
+
+              <div className="flex-1">
+                <FadeAndSlide delay="delay-200">
                   <nav className="backdrop-blur-md flex flex-wrap space-x-6 justify-center my-6 sticky top-0 bg-[#fff6f6]/50 dark:bg-neutral-800/50 z-10 py-4">
                     <Link className="whitespace-nowrap" href="/">
                       home
@@ -68,18 +71,23 @@ export default async function RootLayout({
                       );
                     })}
                   </nav>
-                  <main id="page" className="max-w-[650px] text-left px-4">
-                    {children}
-                  </main>
-                  <footer className="text-xs py-10 sticky top-[100vh]">
-                    {"© 2024 Chris Aldred. "}
-                    <Link href="https://github.com/christopher-aldred/minimal-tina-cms-site">
-                      This site is open source
-                    </Link>
-                    {"! <3"}
-                  </footer>
-                </div>
-              </FadeAndSlide>
+                </FadeAndSlide>
+
+                <FadeAndSlide delay="delay-300">
+                  <div>
+                    <main id="page" className="max-w-[650px] text-left px-4">
+                      {children}
+                    </main>
+                    <footer className="text-xs py-10 sticky top-[100vh]">
+                      {"© 2024 Chris Aldred. "}
+                      <Link href="https://github.com/christopher-aldred/minimal-tina-cms-site">
+                        This site is open source
+                      </Link>
+                      {"! <3"}
+                    </footer>
+                  </div>
+                </FadeAndSlide>
+              </div>
             </Transition>
           </center>
         </div>
