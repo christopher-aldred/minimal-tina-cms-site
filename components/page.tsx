@@ -1,10 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { PageQuery } from "../tina/__generated__/types";
 import { tinaField, useTina } from "tinacms/dist/react";
 import { useEffect } from "react";
-import { FadeAndSlide } from "../app/animations";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 export function Page(props: {
