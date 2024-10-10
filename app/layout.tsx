@@ -34,7 +34,7 @@ export default async function RootLayout({
             >
               <FadeAndSlide delay="delay-0">
                 <header>
-                  <div className="max-w-96 py-10 text-left px-4">
+                  <div className="max-w-96 pt-10 text-left px-4">
                     <h1 className="text-3xl my-4">Chris's blog template</h1>
                     <h2 className="text-2xl text-neutral-500 dark:text-neutral-400">
                       A blog template for you!
@@ -44,7 +44,7 @@ export default async function RootLayout({
               </FadeAndSlide>
               <FadeAndSlide delay="delay-100">
                 <div className="flex-1">
-                  <nav className="flex space-x-6 justify-center mb-9">
+                  <nav className="backdrop-blur-md flex space-x-6 justify-center my-6 sticky top-0 bg-[#fff6f6]/50 dark:bg-neutral-800/50 z-10 py-4">
                     <Link href="/">home</Link>
                     <Link id="nav-posts-link" href="/posts">
                       posts

@@ -21,7 +21,7 @@ export default async function Page() {
                 {new Date(post!.node!.added).toDateString()}
               </div>
             </div>
-            <div className="text-neutral-700 text-base my-1">
+            <div className="text-neutral-700 dark:text-neutral-300 text-base my-1">
               {post!.node!.shortDescription}
             </div>
             <div className="text-xs">
