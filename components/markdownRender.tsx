@@ -21,11 +21,11 @@ export function MarkdownRender(props: {
 
   // Assigns every underlined word one of four decoration colours randomly
   const randomiseLinkColours = () => {
-    let items = document.getElementsByTagName("a");
-    for (var i = 0; i < items.length; i++) {
-      items[i]!.className =
+    let items = document.querySelectorAll("a");
+    items.forEach((item) => {
+      item.className =
         colourArray[Math.floor(Math.random() * colourArray.length)];
-    }
+    });
   };
 
   const highlightPageLink = () => {
