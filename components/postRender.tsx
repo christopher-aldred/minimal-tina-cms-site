@@ -4,7 +4,9 @@ import { PageQuery, PostQuery } from "../tina/__generated__/types";
 import { tinaField, useTina } from "tinacms/dist/react";
 import { useEffect } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import initLinkStyling from "../utils/initLinkStyling";
+import initLinkStyling, { colourArray } from "../utils/initLinkStyling";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export function PostRender(props: {
   data: PostQuery;
@@ -13,22 +15,34 @@ export function PostRender(props: {
 }) {
   const { data } = useTina(props);
 
+  if (data === undefined || data === null) return notFound();
+
   useEffect(() => {
-    initLinkStyling();
+    initLinkStyling(true);
   }, []);
 
   return (
     <>
-      <h1 data-tina-field={tinaField(data.post, "title")}>{data.post.title}</h1>
+      <h1 data-tina-field={tinaField(data?.post, "title")}>
+        {data?.post.title}
+      </h1>
       <div
-        data-tina-field={tinaField(data.post, "added")}
+        data-tina-field={tinaField(data?.post, "added")}
         className="text-sm text-neutral-500 italic py-4"
       >
-        {new Date(data.post.added).toDateString()}
+        {new Date(data?.post.added).toDateString()}
       </div>
+      <div className="-my-2 text-sm">
+        {data?.post?.tags?.map((tag) => (
+          <span className="mr-4">
+            <Link href={`/tag/${tag}`}>{`#${tag}`}</Link>
+          </span>
+        ))}
+      </div>
+      <br />
       <hr className="border-neutral-950 mb-4 " />
-      <div data-tina-field={tinaField(data.post, "body")}>
-        <TinaMarkdown content={data.post.body} />
+      <div data-tina-field={tinaField(data?.post, "body")}>
+        <TinaMarkdown content={data?.post.body} />
       </div>
     </>
   );

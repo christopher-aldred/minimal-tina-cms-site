@@ -1,4 +1,4 @@
-let colourArray = [
+export const colourArray = [
   "decoration-yellow-400",
   "decoration-red-500",
   "decoration-green-500",
@@ -14,7 +14,7 @@ const randomiseLinkColours = () => {
   });
 };
 
-const highlightPageLink = () => {
+const highlightCurrentPageLink = () => {
   var pageLinks = document.querySelectorAll(
     `a[href='${window.location.pathname}']`
   );
@@ -25,16 +25,27 @@ const highlightPageLink = () => {
   });
 };
 
-export default function initLinkStyling() {
+const highlightPostsLink = () => {
+  var pageLinks = document.querySelectorAll(`a[href='/posts']`);
+  pageLinks.forEach((pageLink) => {
+    pageLink.className =
+      "font-iaWriterMonoBold underline decoration-[3px] " +
+      colourArray[Math.floor(Math.random() * colourArray.length)];
+  });
+};
+
+export default function initLinkStyling(postPage: boolean = false) {
   randomiseLinkColours();
-  highlightPageLink();
+  highlightCurrentPageLink();
+  postPage ? highlightPostsLink() : null;
   let items = document.getElementsByTagName("a");
   let triggered = false;
   for (var i = 0; i < items.length; i++) {
     items[i].addEventListener("mouseenter", () => {
       if (!triggered) {
         randomiseLinkColours();
-        highlightPageLink();
+        highlightCurrentPageLink();
+        postPage ? highlightPostsLink() : null;
         triggered = true;
       }
     });

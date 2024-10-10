@@ -39,9 +39,11 @@ export default async function RootLayout({
               </FadeAndSlide>
               <FadeAndSlide delay="delay-100">
                 <div>
-                  <nav className="flex space-x-6 justify-center mb-10">
+                  <nav className="flex space-x-6 justify-center mb-9">
                     <Link href="/">home</Link>
-                    <Link href="/posts">posts</Link>
+                    <Link id="nav-posts-link" href="/posts">
+                      posts
+                    </Link>
                     {pages.map((page) => {
                       if (page.slug === "home") return null;
                       return (
