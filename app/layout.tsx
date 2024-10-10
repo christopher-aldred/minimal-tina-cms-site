@@ -44,15 +44,25 @@ export default async function RootLayout({
               </FadeAndSlide>
               <FadeAndSlide delay="delay-100">
                 <div className="flex-1">
-                  <nav className="backdrop-blur-md flex space-x-6 justify-center my-6 sticky top-0 bg-[#fff6f6]/50 dark:bg-neutral-800/50 z-10 py-4">
-                    <Link href="/">home</Link>
-                    <Link id="nav-posts-link" href="/posts">
+                  <nav className="backdrop-blur-md flex flex-wrap space-x-6 justify-center my-6 sticky top-0 bg-[#fff6f6]/50 dark:bg-neutral-800/50 z-10 py-4">
+                    <Link className="whitespace-nowrap" href="/">
+                      home
+                    </Link>
+                    <Link
+                      className="whitespace-nowrap"
+                      id="nav-posts-link"
+                      href="/posts"
+                    >
                       posts
                     </Link>
                     {pages.map((page) => {
                       if (page.slug === "home") return null;
                       return (
-                        <Link key={page.slug} href={`/page/${page.slug}`}>
+                        <Link
+                          key={page.slug}
+                          className="whitespace-nowrap"
+                          href={`/page/${page.slug}`}
+                        >
                           {page.slug}
                         </Link>
                       );
