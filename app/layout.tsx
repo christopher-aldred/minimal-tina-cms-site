@@ -78,7 +78,7 @@ export default async function RootLayout({
                     <main id="page" className="max-w-[650px] text-left px-4">
                       {children}
                     </main>
-                    <footer className="text-xs py-10 sticky top-[100vh]">
+                    <footer className="text-xs py-10">
                       {"© 2024 Chris Aldred. "}
                       <Link href="https://github.com/christopher-aldred/minimal-tina-cms-site">
                         This site is open source
