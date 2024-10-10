@@ -12,31 +12,44 @@ export function MarkdownRender(props: {
 }) {
   const { data } = useTina(props);
 
+  let colourArray = [
+    "decoration-yellow-400",
+    "decoration-red-500",
+    "decoration-green-500",
+    "decoration-blue-500",
+  ];
+
   // Assigns every underlined word one of four decoration colours randomly
   const randomiseLinkColours = () => {
-    let colourArray = [
-      "decoration-yellow-400",
-      "decoration-red-500",
-      "decoration-green-500",
-      "decoration-blue-500",
-    ];
     let items = document.getElementsByTagName("a");
     for (var i = 0; i < items.length; i++) {
-      items[i]!.className = ` ${
-        colourArray[Math.floor(Math.random() * colourArray.length)]
-      }`;
+      items[i]!.className =
+        colourArray[Math.floor(Math.random() * colourArray.length)];
     }
+  };
+
+  const highlightPageLink = () => {
+    var pageLinks = document.querySelectorAll(
+      `a[href='${window.location.pathname}']`
+    );
+    pageLinks.forEach((pageLink) => {
+      pageLink.className =
+        "font-iaWriterMonoBold underline decoration-[3px] " +
+        colourArray[Math.floor(Math.random() * colourArray.length)];
+    });
   };
 
   // On first load, randomise the link colours and attach event listeners
   useEffect(() => {
     randomiseLinkColours();
+    highlightPageLink();
     let items = document.getElementsByTagName("a");
     let triggered = false;
     for (var i = 0; i < items.length; i++) {
       items[i].addEventListener("mouseenter", () => {
         if (!triggered) {
           randomiseLinkColours();
+          highlightPageLink();
           triggered = true;
         }
       });

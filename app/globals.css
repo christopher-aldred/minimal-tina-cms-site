@@ -10,7 +10,7 @@
 
 @layer base {
   main img {
-    @apply rounded-lg;
+    @apply rounded-lg mb-4;
   }
   ul {
     @apply list-disc list-item ml-5;
@@ -29,6 +29,9 @@
   }
   h3 {
     @apply text-xl text-neutral-500 dark:text-neutral-400 mt-4;
+  }
+  h4 {
+    @apply text-neutral-500 dark:text-neutral-400 mt-4;
   }
   p {
     @apply mb-4;
