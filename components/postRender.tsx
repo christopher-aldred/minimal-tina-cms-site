@@ -33,7 +33,7 @@ export function PostRender(props: {
         ))}
       </div>
       <br />
-      <hr className="border-neutral-950 mb-4 " />
+      <hr className="border-neutral-950 dark:border-neutral-100 mb-4" />
       <div data-tina-field={tinaField(data?.post, "body")}>
         <TinaMarkdown content={data?.post.body} />
       </div>
