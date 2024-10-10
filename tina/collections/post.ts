@@ -43,6 +43,12 @@ export const PostCollection: Collection = {
       required: true,
     },
     {
+      type: "rich-text",
+      name: "body",
+      label: "Body",
+      isBody: true,
+    },
+    {
       label: "Updated",
       name: "updated",
       type: "datetime",
@@ -57,8 +63,8 @@ export const PostCollection: Collection = {
       list: true,
       options: [
         {
-          value: "technical",
-          label: "Technical",
+          value: "technology",
+          label: "Technology",
         },
         {
           value: "work",
@@ -76,13 +82,19 @@ export const PostCollection: Collection = {
           value: "blog",
           label: "Blog",
         },
+        {
+          value: "photography",
+          label: "Photography",
+        },
+        {
+          value: "music",
+          label: "Music",
+        },
+        {
+          value: "art",
+          label: "Art",
+        },
       ],
-    },
-    {
-      type: "rich-text",
-      name: "body",
-      label: "Body",
-      isBody: true,
     },
   ],
 };

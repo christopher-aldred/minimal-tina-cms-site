@@ -1,12 +1,10 @@
 ---
 title: Second post with a really long title
-shortDescription: >-
-  Believe it or not this is the second post! Gpnna be a good article this one
-  folks so you stick around to find out some insightful stuff!
+shortDescription: The Buzz Aldrin of posts if you will
 added: 2024-10-10T17:39:53.155Z
 tags:
   - technical
   - news
 ---
 
-First post baby!
+Second post :)

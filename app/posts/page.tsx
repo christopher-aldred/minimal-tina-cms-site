@@ -26,7 +26,10 @@ export default async function Page() {
             </div>
             <div className="text-xs">
               {post!.node!.tags?.map((tag) => (
-                <span className="mr-4 text-neutral-500" key={tag}>
+                <span
+                  className="mr-4 text-neutral-600 dark:text-neutral-400"
+                  key={tag}
+                >
                   <Link href={`/tag/${tag}`}>{`#${tag}`}</Link>
                 </span>
               ))}

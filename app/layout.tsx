@@ -24,7 +24,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="w-screen font-iaWriterMono bg-[#fff6f6] text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200">
+        <div className="min-w-screen font-iaWriterMono bg-[#fff6f6] text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 overflow-hidden mb-1">
           <center>
             <Transition
               className="min-h-screen flex flex-col"
@@ -63,7 +63,9 @@ export default async function RootLayout({
                   </main>
                   <footer className="text-xs py-10 sticky top-[100vh]">
                     {"© 2024 Chris Aldred. "}
-                    <Link href="#">This site is open source</Link>
+                    <Link href="https://github.com/christopher-aldred/minimal-tina-cms-site">
+                      This site is open source
+                    </Link>
                     {"! <3"}
                   </footer>
                 </div>
