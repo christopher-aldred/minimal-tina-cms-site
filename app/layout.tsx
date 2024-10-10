@@ -24,9 +24,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="min-h-screen w-screen font-iaWriterMono bg-[#fff6f6] text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200">
+        <div className="w-screen font-iaWriterMono bg-[#fff6f6] text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200">
           <center>
-            <Transition as="div" show={true} appear={true}>
+            <Transition
+              className="min-h-screen flex flex-col"
+              as="div"
+              show={true}
+              appear={true}
+            >
               <FadeAndSlide delay="delay-0">
                 <header>
                   <div className="max-w-96 py-10 text-left px-4">
@@ -38,7 +43,7 @@ export default async function RootLayout({
                 </header>
               </FadeAndSlide>
               <FadeAndSlide delay="delay-100">
-                <div>
+                <div className="flex-1">
                   <nav className="flex space-x-6 justify-center mb-9">
                     <Link href="/">home</Link>
                     <Link id="nav-posts-link" href="/posts">
@@ -53,12 +58,14 @@ export default async function RootLayout({
                       );
                     })}
                   </nav>
-                  <main
-                    id="page"
-                    className="max-w-[650px] text-left px-4 pb-10"
-                  >
+                  <main id="page" className="max-w-[650px] text-left px-4">
                     {children}
                   </main>
+                  <footer className="text-xs py-10 sticky top-[100vh]">
+                    {"© 2024 Chris Aldred. "}
+                    <Link href="#">This site is open source</Link>
+                    {"! <3"}
+                  </footer>
                 </div>
               </FadeAndSlide>
             </Transition>

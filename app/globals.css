@@ -42,6 +42,9 @@
   main a {
     @apply underline;
   }
+  footer a {
+    @apply underline;
+  }
   u {
     @apply decoration-[3px] decoration-white/0;
   }
