@@ -41,7 +41,7 @@ export default async function RootLayout({
                 <div>
                   <nav className="flex space-x-6 justify-center mb-10">
                     <Link href="/">home</Link>
-                    <Link href="#">posts</Link>
+                    <Link href="/posts">posts</Link>
                     {pages.map((page) => {
                       if (page.slug === "home") return null;
                       return (
