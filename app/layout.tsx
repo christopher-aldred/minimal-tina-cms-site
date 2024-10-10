@@ -24,7 +24,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="h-screen w-screen font-iaWriterMono bg-[#fff6f6] text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200">
+        <div className="min-h-screen w-screen font-iaWriterMono bg-[#fff6f6] text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200">
           <center>
             <Transition as="div" show={true} appear={true}>
               <FadeAndSlide delay="delay-0">
@@ -51,7 +51,10 @@ export default async function RootLayout({
                       );
                     })}
                   </nav>
-                  <main id="page" className="max-w-[650px] text-left px-4">
+                  <main
+                    id="page"
+                    className="max-w-[650px] text-left px-4 pb-10"
+                  >
                     {children}
                   </main>
                 </div>

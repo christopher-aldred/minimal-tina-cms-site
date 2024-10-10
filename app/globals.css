@@ -9,6 +9,9 @@
 }
 
 @layer base {
+  main img {
+    @apply rounded-lg;
+  }
   ul {
     @apply list-disc list-item ml-5;
   }
