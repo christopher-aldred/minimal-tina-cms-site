@@ -10,15 +10,23 @@ export default async function Page() {
       <div>
         {data!.postConnection!.edges!.map((post) => (
           <div className="text-2xl mb-8" key={post!.node!.id}>
-            <Link href={`/posts/${post!.node!._sys.filename}`}>
-              {post!.node!.title}
-            </Link>
+            <div className="flex items-baseline justify-between">
+              <Link
+                href={`/posts/${post!.node!._sys.filename}`}
+                className="flex-1"
+              >
+                {post!.node!.title}
+              </Link>
+              <div className="text-sm text-neutral-500 italic ml-2 whitespace-nowrap">
+                {new Date(post!.node!.added).toDateString()}
+              </div>
+            </div>
             <div className="text-neutral-700 text-base my-1">
               {post!.node!.shortDescription}
             </div>
             <div className="text-xs">
               {post!.node!.tags?.map((tag) => (
-                <span className="mr-4 text-neutral-500">
+                <span className="mr-4 text-neutral-500" key={tag}>
                   <Link href={`/tag/${tag}`}>{`#${tag}`}</Link>
                 </span>
               ))}
