@@ -1,3 +1,4 @@
+import LinkColourer from "../../../components/linkColourer";
 import { MarkdownRender } from "../../../components/markdownRender";
 import { client } from "../../../tina/__generated__/databaseClient";
 
@@ -16,11 +17,14 @@ const DynamicPage = async ({ params: { slug } }) => {
   });
 
   return (
-    <MarkdownRender
-      data={JSON.parse(JSON.stringify(res.data))}
-      query={res.query}
-      variables={res.variables}
-    />
+    <>
+      <LinkColourer />
+      <MarkdownRender
+        data={JSON.parse(JSON.stringify(res.data))}
+        query={res.query}
+        variables={res.variables}
+      />
+    </>
   );
 };
 

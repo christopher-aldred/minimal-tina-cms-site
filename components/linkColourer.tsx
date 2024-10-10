@@ -1,3 +1,7 @@
+"use client";
+
+import React, { useEffect } from "react";
+
 export const colourArray = [
   "decoration-yellow-400",
   "decoration-red-500",
@@ -25,19 +29,9 @@ const highlightCurrentPageLink = () => {
   });
 };
 
-const highlightPostsLink = () => {
-  var pageLinks = document.querySelectorAll(`a[href='/posts']`);
-  pageLinks.forEach((pageLink) => {
-    pageLink.className =
-      "font-iaWriterMonoBold underline decoration-[3px] " +
-      colourArray[Math.floor(Math.random() * colourArray.length)];
-  });
-};
-
-export default function initLinkStyling(postPage: boolean = false) {
+const initLinkStyling = () => {
   randomiseLinkColours();
   highlightCurrentPageLink();
-  postPage ? highlightPostsLink() : null;
   let items = document.getElementsByTagName("a");
   let triggered = false;
   for (var i = 0; i < items.length; i++) {
@@ -45,7 +39,6 @@ export default function initLinkStyling(postPage: boolean = false) {
       if (!triggered) {
         randomiseLinkColours();
         highlightCurrentPageLink();
-        postPage ? highlightPostsLink() : null;
         triggered = true;
       }
     });
@@ -53,4 +46,11 @@ export default function initLinkStyling(postPage: boolean = false) {
       triggered = false;
     });
   }
+};
+
+export default function LinkColourer() {
+  useEffect(() => {
+    initLinkStyling();
+  }, [window.location.href]);
+  return <div></div>;
 }

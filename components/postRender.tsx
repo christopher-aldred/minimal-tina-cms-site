@@ -2,9 +2,7 @@
 
 import { PageQuery, PostQuery } from "../tina/__generated__/types";
 import { tinaField, useTina } from "tinacms/dist/react";
-import { useEffect } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import initLinkStyling, { colourArray } from "../utils/initLinkStyling";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -16,11 +14,6 @@ export function PostRender(props: {
   const { data } = useTina(props);
 
   if (data === undefined || data === null) return notFound();
-
-  useEffect(() => {
-    initLinkStyling(true);
-  }, []);
-
   return (
     <>
       <h1 data-tina-field={tinaField(data?.post, "title")}>

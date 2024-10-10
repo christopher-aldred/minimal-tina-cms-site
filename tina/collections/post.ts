@@ -25,6 +25,13 @@ export const PostCollection: Collection = {
       type: "string",
       label: "Title",
       name: "title",
+      required: true,
+    },
+    {
+      type: "string",
+      label: "Short description",
+      name: "shortDescription",
+      required: true,
     },
     {
       label: "Added",
