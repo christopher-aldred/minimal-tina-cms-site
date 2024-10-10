@@ -1,4 +1,4 @@
-import { Page } from "../../../components/page";
+import { MarkdownRender } from "../../../components/markdownRender";
 import { client } from "../../../tina/__generated__/databaseClient";
 
 export async function generateStaticParams() {
@@ -10,13 +10,13 @@ export async function generateStaticParams() {
   return paths || [];
 }
 
-const BlogPost = async ({ params: { slug } }) => {
+const DynamicPage = async ({ params: { slug } }) => {
   const res = await client.queries.page({
     relativePath: `${slug}.mdx`,
   });
 
   return (
-    <Page
+    <MarkdownRender
       data={JSON.parse(JSON.stringify(res.data))}
       query={res.query}
       variables={res.variables}
@@ -24,4 +24,4 @@ const BlogPost = async ({ params: { slug } }) => {
   );
 };
 
-export default BlogPost;
+export default DynamicPage;

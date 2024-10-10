@@ -5,7 +5,7 @@ import { tinaField, useTina } from "tinacms/dist/react";
 import { useEffect } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
-export function Page(props: {
+export function MarkdownRender(props: {
   data: PageQuery;
   variables: object;
   query: string;
