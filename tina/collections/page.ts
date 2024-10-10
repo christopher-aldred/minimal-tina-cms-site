@@ -18,6 +18,13 @@ export const PageCollection: Collection = {
   },
   fields: [
     {
+      type: "string",
+      label: "Title",
+      name: "title",
+      isTitle: true,
+      required: true,
+    },
+    {
       type: "rich-text",
       label: "Post Body",
       name: "body",
