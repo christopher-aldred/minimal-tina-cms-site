@@ -8,6 +8,11 @@ export default async function Page() {
   return (
     <>
       <LinkColourer />
+      {data!.postConnection!.edges!.length < 1 ? (
+        <center>
+          <h1>No posts yet!</h1>
+        </center>
+      ) : null}
       <div>
         {data!.postConnection!.edges!.map((post) => (
           <div className="text-2xl mb-8" key={post!.node!.id}>
