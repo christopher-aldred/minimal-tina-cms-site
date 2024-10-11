@@ -3,7 +3,7 @@ title: First post
 shortDescription: >-
   Believe it or not this is the first post! Gonna be a good article this one
   folks, stick around to find out some insightful stuff! 
-added: 2024-10-10T17:39:53.155Z
+added: 2024-10-08T23:00:00.000Z
 tags:
   - news
   - blog

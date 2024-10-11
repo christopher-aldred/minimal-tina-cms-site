@@ -21,7 +21,7 @@ export default async function Page() {
       ) : null}
       <div>
         {posts.map((post) => (
-          <div className="text-2xl mb-8" key={post!.node!.id}>
+          <div className="text-2xl mb-10" key={post!.node!.id}>
             <div className="flex items-baseline justify-between">
               <Link
                 href={`/posts/${post!.node!._sys.filename}`}
