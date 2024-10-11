@@ -2,6 +2,7 @@ import Link from "next/link";
 import { client } from "../../tina/__generated__/databaseClient";
 import LinkColourer from "../../components/linkColourer";
 
+// Page listing all posts
 export default async function Page() {
   const { data } = await client.queries.postConnection();
   return (

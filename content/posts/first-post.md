@@ -6,9 +6,6 @@ shortDescription: >-
 added: 2024-10-10T17:39:53.155Z
 tags:
   - news
-  - technical
-  - work
-  - personal
   - blog
 ---
 

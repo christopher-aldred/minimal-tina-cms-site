@@ -3,7 +3,7 @@ import LinkColourer from "../components/linkColourer";
 
 export default function NotFound() {
   return (
-    <center>
+    <center className="m-32">
       <LinkColourer />
       <h1>Not found – 404!</h1>
       <div>

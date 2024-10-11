@@ -5,6 +5,7 @@ import { FadeAndSlide } from "./animations";
 const inter = Inter({ subsets: ["latin"] });
 import { client } from "../tina/__generated__/databaseClient";
 import Link from "next/link";
+import Tags from "../components/tags";
 
 export const metadata = {
   title: "Chris's blog template",
@@ -78,6 +79,7 @@ export default async function RootLayout({
                     <main id="page" className="max-w-[650px] text-left px-4">
                       {children}
                     </main>
+                    <Tags className="text-sm" />
                     <footer className="text-xs py-10">
                       {"© 2024 Chris Aldred. "}
                       <Link href="https://github.com/christopher-aldred/minimal-tina-cms-site">
