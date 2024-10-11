@@ -61,6 +61,9 @@ export const PostCollection: Collection = {
       name: "tags",
       type: "string",
       list: true,
+      ui: {
+        component: "tags",
+      },
       options: [
         {
           value: "technology",
@@ -81,18 +84,6 @@ export const PostCollection: Collection = {
         {
           value: "blog",
           label: "Blog",
-        },
-        {
-          value: "photography",
-          label: "Photography",
-        },
-        {
-          value: "music",
-          label: "Music",
-        },
-        {
-          value: "art",
-          label: "Art",
         },
       ],
     },

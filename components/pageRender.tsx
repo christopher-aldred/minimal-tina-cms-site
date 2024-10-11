@@ -5,7 +5,7 @@ import { tinaField, useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { notFound } from "next/navigation";
 
-export function MarkdownRender(props: {
+export function PageRender(props: {
   data: PageQuery;
   variables: object;
   query: string;

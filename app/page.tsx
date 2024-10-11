@@ -1,5 +1,5 @@
 import LinkColourer from "../components/linkColourer";
-import { MarkdownRender } from "../components/markdownRender";
+import { PageRender } from "../components/pageRender";
 import { client } from "../tina/__generated__/databaseClient";
 
 export default async function Home() {
@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <>
       <LinkColourer />
-      <MarkdownRender
+      <PageRender
         data={JSON.parse(JSON.stringify(res.data))}
         query={res.query}
         variables={res.variables}
