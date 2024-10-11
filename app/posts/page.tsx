@@ -5,16 +5,22 @@ import LinkColourer from "../../components/linkColourer";
 // Page listing all posts
 export default async function Page() {
   const { data } = await client.queries.postConnection();
+  let posts = data!.postConnection!.edges!;
+  posts = posts.sort(
+    (a, b) =>
+      new Date(b?.node?.added!).valueOf() - new Date(a?.node?.added!).valueOf()
+  );
+
   return (
     <>
       <LinkColourer />
-      {data!.postConnection!.edges!.length < 1 ? (
+      {posts.length < 1 ? (
         <center>
           <h1>No posts yet!</h1>
         </center>
       ) : null}
       <div>
-        {data!.postConnection!.edges!.map((post) => (
+        {posts.map((post) => (
           <div className="text-2xl mb-8" key={post!.node!.id}>
             <div className="flex items-baseline justify-between">
               <Link
