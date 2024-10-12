@@ -2,21 +2,35 @@ import Link from "next/link";
 import { client } from "../../tina/__generated__/databaseClient";
 import LinkColourer from "../../components/linkColourer";
 
+interface PaginationProps {
+  after?: Date | null;
+}
+
 // Page listing all posts
-export default async function Page() {
-  const { data } = await client.queries.postConnection();
+export default async function Page({ after = new Date() }: PaginationProps) {
+  const itemsPerPage = 2;
+  after?.setDate(after.getDate() + 1);
+  const { data } = await client.queries.postConnection({
+    sort: "added",
+    last: itemsPerPage,
+    filter: { added: { before: after?.toDateString() } },
+  });
   let posts = data!.postConnection!.edges!;
-  posts = posts.sort(
-    (a, b) =>
-      new Date(b?.node?.added!).valueOf() - new Date(a?.node?.added!).valueOf()
-  );
+
+  // posts = posts.sort(
+  //   (a, b) =>
+  //     new Date(b?.node?.added!).valueOf() - new Date(a?.node?.added!).valueOf()
+  // );
 
   return (
     <>
       <LinkColourer />
+      {/* <center>
+        <h1>{after?.toDateString()}</h1>
+      </center> */}
       {posts.length < 1 ? (
         <center>
-          <h1>No posts yet!</h1>
+          <h1>No posts!</h1>
         </center>
       ) : null}
       <div>
@@ -49,6 +63,20 @@ export default async function Page() {
           </div>
         ))}
       </div>
+
+      <center className="space-x-4">
+        {posts.length > 0 ? (
+          <Link
+            href={`/posts/page/${
+              new Date(posts[posts.length - 1]?.node?.added!)
+                .toISOString()
+                .split("T")[0]
+            }`}
+          >
+            Older →
+          </Link>
+        ) : null}
+      </center>
     </>
   );
 }
