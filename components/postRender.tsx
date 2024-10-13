@@ -14,6 +14,7 @@ export function PostRender(props: {
   const { data } = useTina(props);
 
   if (data === undefined || data === null) return notFound();
+
   return (
     <>
       <h1 data-tina-field={tinaField(data?.post, "title")}>
