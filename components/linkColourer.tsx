@@ -30,9 +30,12 @@ const highlightCurrentPageLink = () => {
   });
 };
 
-//Conditionaly highlight posts link if in a post
+//Conditionaly highlight posts link if in a post or tag
 const conditionallyHighlightPostsLink = () => {
-  if (window.location.pathname.includes("/posts")) {
+  if (
+    window.location.pathname.includes("/posts") ||
+    window.location.pathname.includes("/tag")
+  ) {
     var pageLinks = document.querySelectorAll(`a[href='/posts']`);
     pageLinks.forEach((pageLink) => {
       pageLink.className =

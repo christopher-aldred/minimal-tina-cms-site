@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default async function PostPreview(post) {
+export default async function PostPreview({ post }) {
   return (
     <div className="text-2xl mb-10" key={post!.node!.id}>
       <div className="flex items-baseline justify-between">

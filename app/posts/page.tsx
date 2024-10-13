@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { client } from "../../tina/__generated__/databaseClient";
 import LinkColourer from "../../components/linkColourer";
+import PostPreview from "../../components/postPreview";
+import GoBackLink from "../../components/gobackLink";
 
 interface PaginationProps {
   after?: Date | null;
@@ -23,49 +25,18 @@ export default async function Page({ after = new Date() }: PaginationProps) {
 
       {posts.length < 1 ? (
         <center>
-          <h1>No posts!</h1>
+          <h1>No more posts!</h1>
+          <GoBackLink />
         </center>
       ) : null}
 
       <div>
         {posts.map((post) => (
-          <div className="text-2xl mb-10" key={post!.node!.id}>
-            <div className="flex items-baseline justify-between">
-              {/* Title */}
-              <Link
-                href={`/posts/${post!.node!._sys.filename}`}
-                className="flex-1"
-              >
-                {post!.node!.title}
-              </Link>
-
-              {/* Date */}
-              <div className="text-sm text-neutral-500 italic ml-2 whitespace-nowrap">
-                {new Date(post!.node!.added).toDateString()}
-              </div>
-            </div>
-
-            {/* Description */}
-            <div className="text-neutral-700 dark:text-neutral-300 text-base my-1">
-              {post!.node!.shortDescription}
-            </div>
-
-            {/* Tags */}
-            <div className="text-xs">
-              {post!.node!.tags?.map((tag) => (
-                <span
-                  className="mr-4 text-neutral-600 dark:text-neutral-400"
-                  key={tag}
-                >
-                  <Link href={`/tag/${tag}`}>{`#${tag}`}</Link>
-                </span>
-              ))}
-            </div>
-          </div>
+          <PostPreview post={post} />
         ))}
       </div>
 
-      <center className="space-x-4">
+      <center>
         {posts.length > 0 ? (
           <Link
             href={`/posts/page/${

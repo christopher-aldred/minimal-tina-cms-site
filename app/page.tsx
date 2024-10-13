@@ -2,6 +2,7 @@ import LinkColourer from "../components/linkColourer";
 import { PageRender } from "../components/pageRender";
 import { client } from "../tina/__generated__/databaseClient";
 
+// Home page
 export default async function Home() {
   const res = await client.queries.page({ relativePath: "home.mdx" });
   return (

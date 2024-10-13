@@ -17,15 +17,20 @@ export function PostRender(props: {
 
   return (
     <>
+      {/* Title */}
       <h1 data-tina-field={tinaField(data?.post, "title")}>
         {data?.post.title}
       </h1>
+
+      {/* Date */}
       <div
         data-tina-field={tinaField(data?.post, "added")}
         className="text-sm text-neutral-500 italic py-4"
       >
         {new Date(data?.post.added).toDateString()}
       </div>
+
+      {/* Tags */}
       <div className="-my-2 text-sm">
         {data?.post?.tags?.map((tag) => (
           <span className="mr-4">
@@ -33,8 +38,11 @@ export function PostRender(props: {
           </span>
         ))}
       </div>
+
       <br />
       <hr className="border-neutral-950 dark:border-neutral-100 mb-4" />
+
+      {/* Body */}
       <div data-tina-field={tinaField(data?.post, "body")}>
         <TinaMarkdown content={data?.post.body} />
       </div>

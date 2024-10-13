@@ -33,6 +33,7 @@ export default async function RootLayout({
               show={true}
               appear={true}
             >
+              {/* Header */}
               <header>
                 <div className="max-w-96 pt-10 text-left px-4">
                   <FadeAndSlide delay="delay-0">
@@ -48,6 +49,7 @@ export default async function RootLayout({
 
               <div className="flex-1">
                 <FadeAndSlide delay="delay-200">
+                  {/* Nav */}
                   <nav className="backdrop-blur-md flex flex-wrap space-x-6 justify-center my-6 sticky top-0 bg-[#fff6f6]/50 dark:bg-neutral-800/50 z-10 py-4">
                     <Link className="whitespace-nowrap" href="/">
                       home
@@ -59,6 +61,8 @@ export default async function RootLayout({
                     >
                       posts
                     </Link>
+
+                    {/* Adds dynamic pages to nav */}
                     {pages.map((page) => {
                       if (page.slug === "home") return null;
                       return (
@@ -76,10 +80,15 @@ export default async function RootLayout({
 
                 <FadeAndSlide delay="delay-300">
                   <div>
+                    {/* Main content */}
                     <main id="page" className="max-w-[650px] text-left px-4">
                       {children}
                     </main>
+
+                    {/* Tags */}
                     <Tags className="text-sm" />
+
+                    {/* Footer */}
                     <footer className="text-xs py-10">
                       {"© 2024 Chris Aldred. "}
                       <Link href="https://github.com/christopher-aldred/minimal-tina-cms-site">
