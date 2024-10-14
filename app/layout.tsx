@@ -54,11 +54,7 @@ export default async function RootLayout({
                     <Link className="whitespace-nowrap" href="/">
                       home
                     </Link>
-                    <Link
-                      className="whitespace-nowrap"
-                      id="nav-posts-link"
-                      href="/posts"
-                    >
+                    <Link className="whitespace-nowrap" href="/posts">
                       posts
                     </Link>
 

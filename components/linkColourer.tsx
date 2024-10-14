@@ -50,8 +50,10 @@ const initLinkStyling = () => {
   randomiseLinkColours();
   highlightCurrentPageLink();
   conditionallyHighlightPostsLink();
+
   let items = document.getElementsByTagName("a");
   let triggered = false;
+
   for (var i = 0; i < items.length; i++) {
     items[i].addEventListener("mouseenter", () => {
       if (!triggered) {
@@ -71,6 +73,6 @@ const initLinkStyling = () => {
 export default function LinkColourer() {
   useEffect(() => {
     initLinkStyling();
-  }, []);
+  });
   return <div></div>;
 }
