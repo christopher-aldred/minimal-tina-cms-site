@@ -25,8 +25,7 @@ export default async function Page({ after = new Date() }: PaginationProps) {
 
       {posts.length < 1 ? (
         <center>
-          <h1>No more posts!</h1>
-          <GoBackLink />
+          <h1 className="m-32">No posts!</h1>
         </center>
       ) : null}
 
@@ -36,7 +35,8 @@ export default async function Page({ after = new Date() }: PaginationProps) {
         ))}
       </div>
 
-      <center>
+      <center className="space-x-6">
+        <GoBackLink />
         {posts.length > 0 ? (
           <Link
             href={`/posts/page/${

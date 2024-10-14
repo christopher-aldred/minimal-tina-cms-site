@@ -12,7 +12,9 @@ export default async function Tag({ params: { slug } }) {
   return (
     <>
       <LinkColourer />
-      <h3 className="text-center mb-8 -mt-1">Posts tagged with "{slug}"</h3>
+      <center className="text-neutral-500 dark:text-neutral-400 -mt-1 mb-8">
+        Posts tagged with "{slug}"
+      </center>
       <div>
         {posts?.map((post) => (
           <PostPreview post={post} />
